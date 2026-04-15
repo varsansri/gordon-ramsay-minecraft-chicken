@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Gordon Ramsay Rates Your Minecraft Food — Free Reaction Generator</title>
+<meta name="description" content="Pick any Minecraft food and get Gordon Ramsay's brutal honest reaction. Tier ratings from S+ to F- with Gordon's signature quotes. Free, funny, shareable.">
+<meta name="keywords" content="Gordon Ramsay Minecraft, Minecraft food tier list Gordon Ramsay, Gordon Ramsay rates Minecraft food, Minecraft cooking Gordon Ramsay, funny Minecraft food rater">
+<link rel="canonical" href="https://varsansri.github.io/gordon-ramsay-minecraft-chicken/">
+<meta property="og:title" content="Gordon Ramsay Rates Your Minecraft Food">
+<meta property="og:description" content="Pick your Minecraft food. Get Gordon's reaction. Brace yourself.">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Gordon Ramsay Minecraft Food Rater","description":"Interactive Minecraft food tier rater with Gordon Ramsay quotes and reactions.","url":"https://varsansri.github.io/gordon-ramsay-minecraft-chicken/","applicationCategory":"EntertainmentApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"}}</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0a0a0f;--surface:#111118;--surface2:#181820;
+  --accent:#ff4557;--accent-dim:rgba(255,69,87,0.10);--accent-border:rgba(255,69,87,0.30);
+  --text:#efefef;--muted:#6b6b80;--border:rgba(255,255,255,0.07);
+  --green:#00e87a;--green-dim:rgba(0,232,122,0.10);
+  --yellow:#ffd93d;--yellow-dim:rgba(255,217,61,0.10);
+  --red:#ff4d4d;--red-dim:rgba(255,77,77,0.10);
+  --radius:14px;--ease:0.2s ease;
+}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;min-height:100vh;padding-bottom:76px;line-height:1.5}
+.wrap{max-width:500px;margin:0 auto;padding:16px 14px 32px}
+.header{text-align:center;padding:24px 0 20px}
+.badge{display:inline-block;background:var(--accent-dim);border:1px solid var(--accent-border);color:var(--accent);font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:4px 14px;border-radius:20px;margin-bottom:14px}
+h1{font-size:clamp(20px,5.5vw,28px);font-weight:800;line-height:1.25;margin-bottom:8px}
+h1 .hl{color:var(--accent)}
+.tagline{color:var(--muted);font-size:13px;max-width:300px;margin:0 auto}
+h2{font-size:13px;color:var(--muted);font-weight:400;margin-top:4px}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:18px;margin-bottom:12px}
+.card-label{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:16px}
+.food-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:16px}
+.food-btn{
+  background:var(--surface2);border:1px solid var(--border);border-radius:10px;
+  padding:12px 10px;text-align:center;cursor:pointer;
+  font-size:13px;color:var(--text);transition:all var(--ease);
+  -webkit-tap-highlight-color:transparent;
+}
+.food-btn:active{transform:scale(.96)}
+.food-btn.selected{border-color:var(--accent-border);background:var(--accent-dim);color:var(--accent)}
+.food-btn .fe{font-size:22px;display:block;margin-bottom:4px}
+.food-btn .fn{font-size:11px;font-weight:600}
+.divider{border:none;border-top:1px solid var(--border);margin:6px 0 16px}
+.rate-btn{width:100%;background:var(--accent);color:#fff;font-size:15px;font-weight:800;padding:14px;border:none;border-radius:var(--radius);cursor:pointer;transition:opacity var(--ease),transform var(--ease);-webkit-tap-highlight-color:transparent}
+.rate-btn:active{opacity:.85;transform:scale(.98)}
+.results{display:none}
+.results.show{display:block;animation:fadeUp .4s ease}
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+/* Ramsay reaction card */
+.ramsay-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:20px;margin-bottom:12px;text-align:center}
+.food-display{font-size:56px;margin-bottom:8px;display:block}
+.food-name-display{font-size:16px;font-weight:700;margin-bottom:16px;color:var(--text)}
+.tier-badge{display:inline-block;font-size:36px;font-weight:900;width:72px;height:72px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;margin-bottom:14px;letter-spacing:-1px}
+.tier-S-plus{background:linear-gradient(135deg,#ffd700,#ff8c00);color:#000}
+.tier-S{background:linear-gradient(135deg,#00e87a,#00b85c);color:#000}
+.tier-A{background:linear-gradient(135deg,#00d4ff,#0099cc);color:#000}
+.tier-B{background:linear-gradient(135deg,#7b61ff,#5540cc);color:#fff}
+.tier-C{background:linear-gradient(135deg,#ffd93d,#cc9900);color:#000}
+.tier-D{background:linear-gradient(135deg,#ff6b35,#cc4400);color:#fff}
+.tier-F{background:linear-gradient(135deg,#ff4d4d,#cc0000);color:#fff}
+.tier-F-minus{background:linear-gradient(135deg,#1a0000,#660000);border:2px solid #ff4d4d;color:#ff4d4d}
+.tier-label{font-size:11px;color:var(--muted);letter-spacing:1px;text-transform:uppercase;margin-bottom:12px}
+.quote-box{background:var(--surface2);border-left:3px solid var(--accent);border-radius:0 8px 8px 0;padding:14px 16px;text-align:left;margin-bottom:16px;font-size:13px;line-height:1.6;font-style:italic;color:var(--text)}
+.quote-box::before{content:'"';font-size:24px;color:var(--accent);line-height:0;vertical-align:-8px;margin-right:4px}
+.quote-box::after{content:'"';font-size:24px;color:var(--accent);line-height:0;vertical-align:-8px;margin-left:2px}
+.ramsay-sig{font-size:11px;color:var(--muted);margin-top:8px;font-style:normal}
+.ramsay-sig span{color:var(--accent);font-weight:700}
+/* Tier scale */
+.tier-scale{display:flex;gap:4px;justify-content:center;margin-top:16px}
+.ts-item{width:36px;height:28px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;opacity:.5}
+.ts-item.active{opacity:1;transform:scale(1.15)}
+.tg-cta{background:linear-gradient(135deg,rgba(255,69,87,.08),rgba(255,69,87,.02));border:1px solid var(--accent-border);border-radius:var(--radius);padding:18px;margin-bottom:12px}
+.tg-title{font-size:14px;font-weight:700;margin-bottom:6px}
+.tg-body{font-size:12px;color:var(--muted);line-height:1.6;margin-bottom:14px}
+.tg-body strong{color:var(--accent)}
+.tg-btn{display:flex;align-items:center;justify-content:center;gap:8px;background:var(--accent);color:#fff;font-weight:800;font-size:13px;padding:12px 20px;border-radius:9px;text-decoration:none;transition:opacity var(--ease);-webkit-tap-highlight-color:transparent}
+.tg-btn:active{opacity:.85}
+.share-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:16px 18px;margin-bottom:12px}
+.share-label{font-size:10px;color:var(--muted);letter-spacing:2px;text-transform:uppercase;margin-bottom:12px}
+.share-btns{display:flex;gap:8px}
+.sb{flex:1;padding:10px;border-radius:8px;font-size:12px;font-weight:700;cursor:pointer;border:1px solid var(--border);background:var(--surface2);color:var(--text);transition:all var(--ease);text-align:center;-webkit-tap-highlight-color:transparent}
+.sb.wa{background:rgba(37,211,102,.08);border-color:rgba(37,211,102,.25);color:#25d366}
+.sb.cp{color:var(--accent);border-color:var(--accent-border)}
+.sb:active{transform:scale(.97)}
+.sticky{position:fixed;bottom:0;left:0;right:0;background:rgba(10,10,15,.96);border-top:1px solid var(--accent-border);padding:10px 16px;display:flex;align-items:center;gap:12px;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);z-index:200}
+.sticky .st{font-size:11px;color:var(--muted);flex:1;line-height:1.4}
+.sticky .st strong{color:var(--accent);font-size:12px;display:block}
+.sticky-btn{background:var(--accent);color:#fff;font-weight:800;font-size:11px;padding:8px 14px;border-radius:8px;text-decoration:none;white-space:nowrap;-webkit-tap-highlight-color:transparent}
+footer{text-align:center;padding:12px;font-size:11px;color:var(--muted);opacity:.7}
+footer a{color:var(--accent);text-decoration:none}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="header">
+    <div class="badge">🎮 Minecraft × Gordon Ramsay</div>
+    <h1>Gordon Ramsay <span class="hl">Rates</span> Your Minecraft Food</h1>
+    <h2>Pick your food. Get Gordon's honest reaction.</h2>
+    <p class="tagline">20 Minecraft foods. 20 brutal honest reviews. Zero mercy.</p>
+  </header>
+
+  <div class="card">
+    <div class="card-label">Choose Your Minecraft Food</div>
+    <div class="food-grid" id="foodGrid"></div>
+    <hr class="divider">
+    <button class="rate-btn" onclick="rateFood()">Get Gordon's Reaction 🔥</button>
+  </div>
+
+  <div class="results" id="results">
+    <div class="ramsay-card">
+      <span class="food-display" id="foodEmoji">🍗</span>
+      <div class="food-name-display" id="foodNameDisplay">Cooked Chicken</div>
+      <div class="tier-label">Gordon's Tier Rating</div>
+      <div class="tier-badge tier-S" id="tierBadge">S</div>
+      <div class="tier-label" id="tierLabel">LEGENDARY</div>
+      <div class="quote-box" id="quoteBox"></div>
+      <div class="ramsay-sig">— <span>Gordon Ramsay</span>, Head Chef, Hell's Kitchen</div>
+      <div class="tier-scale" id="tierScale"></div>
+    </div>
+
+    <div class="tg-cta">
+      <div class="tg-title">More chaotic energy where that came from.</div>
+      <div class="tg-body">Finance, trading, and money strategies — but make it <strong>actually entertaining</strong>. Join DTB Academy on Telegram for <strong>daily insights</strong> that don't put you to sleep.</div>
+      <a href="https://t.me/DTB_Academy" target="_blank" rel="noopener noreferrer" class="tg-btn">📊 Join DTB Academy →</a>
+    </div>
+
+    <div class="share-card">
+      <div class="share-label">Share Gordon's verdict</div>
+      <div class="share-btns">
+        <button class="sb cp" onclick="copyLink(this)">📋 Copy Link</button>
+        <button class="sb wa" onclick="shareWA()">💬 WhatsApp</button>
+      </div>
+    </div>
+  </div>
+
+  <footer>Free fun by <a href="https://t.me/DTB_Academy" target="_blank" rel="noopener">DTB Academy</a> · Not affiliated with Gordon Ramsay or Mojang</footer>
+</div>
+
+<div class="sticky">
+  <div class="st"><strong>📊 DTB Academy — Free</strong>Daily insights & trading signals →</div>
+  <a href="https://t.me/DTB_Academy" target="_blank" rel="noopener noreferrer" class="sticky-btn">Join Free</a>
+</div>
+
+<script>
+const foods = [
+  {name:"Cooked Chicken",emoji:"🍗",tier:"S",label:"LEGENDARY",quote:"NOW we're talking! Golden skin, juicy inside, cooked to absolute perfection. This is what separates real chefs from donkeys. I'm genuinely proud of you.",tclass:"tier-S"},
+  {name:"Raw Chicken",emoji:"🐔",tier:"F",label:"CRIMINAL",quote:"RAW. It's BLOODY RAW! Are you actually trying to kill someone?! You could poison an entire village with this! Get it in the furnace and get OUT of my sight!",tclass:"tier-F"},
+  {name:"Enchanted Golden Apple",emoji:"✨",tier:"S+",label:"GOD TIER",quote:"I... I have no words. This is beyond anything I have ever tasted. Michelin would give this thirty stars. You absolute genius. I am not worthy.",tclass:"tier-S-plus"},
+  {name:"Golden Apple",emoji:"🍎",tier:"A",label:"EXCELLENT",quote:"Showy. Very showy. Excessive, even. But I cannot argue with the flavour. The craft is undeniable. Well done. Don't let it go to your head.",tclass:"tier-A"},
+  {name:"Steak (Cooked Beef)",emoji:"🥩",tier:"S",label:"PERFECTION",quote:"Medium rare, exactly right, beautiful sear. THIS is a meal worthy of Hell's Kitchen. If you can cook a steak this well in a world made of blocks, you can cook anything.",tclass:"tier-S"},
+  {name:"Raw Beef",emoji:"🍖",tier:"F",label:"LAWSUIT",quote:"Raw beef. Again. Every single time. Do you not see the furnace sitting RIGHT THERE?! Cook. The. Meat. It is not complicated!",tclass:"tier-F"},
+  {name:"Bread",emoji:"🍞",tier:"C",label:"MEDIOCRE",quote:"Three wheat. You used three wheat and called it cooking. It's edible. It keeps you alive. It is the beige wallpaper of food. Functional. Utterly uninspired.",tclass:"tier-C"},
+  {name:"Rotten Flesh",emoji:"🧟",tier:"F-",label:"BIOHAZARD",quote:"What. In. The. NAME of God is THAT?! You are serving ZOMBIE FLESH to people?! I have closed restaurants for less. This is a health violation AND a moral crime.",tclass:"tier-F-minus"},
+  {name:"Pumpkin Pie",emoji:"🥧",tier:"B",label:"DECENT",quote:"Pumpkin pie. In Minecraft. Actually... this is surprisingly respectable. Not what I'd serve at my restaurant, but you won't humiliate yourself at a dinner party. Acceptable.",tclass:"tier-B"},
+  {name:"Suspicious Stew",emoji:"🍵",tier:"D",label:"RECKLESS",quote:"SUSPICIOUS. You named it SUSPICIOUS and you're serving it to guests?! You don't even know what's in it! This isn't cooking, it's a DARE!",tclass:"tier-D"},
+  {name:"Cake",emoji:"🎂",tier:"B+",label:"BIZARRE BUT GOOD",quote:"You cannot pick it up. You eat it standing on the floor like an animal. And somehow — SOMEHOW — it works. I don't understand it. I respect it. Barely.",tclass:"tier-B"},
+  {name:"Spider Eye",emoji:"🕷️",tier:"F",label:"GET OUT",quote:"...No. No no no no. Out. GET OUT. Take that with you. Don't come back until you understand what food is. OUT.",tclass:"tier-F"},
+  {name:"Cookie",emoji:"🍪",tier:"C+",label:"ACCEPTABLE",quote:"Two wheat and a cocoa bean. Children's food. Festival snack at best. I'm not angry, I'm just deeply, profoundly disappointed in your ambition.",tclass:"tier-C"},
+  {name:"Cooked Porkchop",emoji:"🥓",tier:"A",label:"WELL DONE",quote:"Properly rendered fat, perfect colour, great texture. This is what a Nether portal is actually worth. You came back from literal Hell and cooked this beautifully. Respect.",tclass:"tier-A"},
+  {name:"Beetroot Soup",emoji:"🥣",tier:"D",label:"WASTE OF A BOWL",quote:"Six ingredients. SIX. For six hunger points. You spent more time crafting this than it will keep you alive. This is inefficiency at a criminal level. Start again.",tclass:"tier-D"},
+  {name:"Melon Slice",emoji:"🍈",tier:"D+",label:"SNACK AT BEST",quote:"A slice of melon. You had a golden apple, cooked salmon, pumpkin pie — and you chose a slice of melon. We need to have a very serious conversation about your priorities.",tclass:"tier-D"},
+  {name:"Mushroom Stew",emoji:"🍄",tier:"C",label:"CAVE FOOD",quote:"Mushroom soup from the floor of a cave. It's... warm. It exists. I've eaten worse in Paris, which says more about Paris than this dish. Edible. That's all I'll give you.",tclass:"tier-C"},
+  {name:"Honey Bottle",emoji:"🍯",tier:"B",label:"CREATIVE",quote:"Drinking honey from a bottle like a bear. Unconventional. Very unconventional. But the flavour is actually remarkable and it clears poison? I am intrigued. Points for originality.",tclass:"tier-B"},
+  {name:"Cooked Salmon",emoji:"🐟",tier:"A",label:"IMPRESSIVE",quote:"Flaky, perfectly cooked, beautiful pink colour. If you can cook salmon properly, you can cook anything. This is genuinely impressive. Well done. Don't waste it on zombies.",tclass:"tier-A"},
+  {name:"Dried Kelp",emoji:"🌿",tier:"D",label:"SURVIVAL ONLY",quote:"You are eating dried seaweed you scraped off the ocean floor. I understand the circumstances. I am still disappointed. You deserve better than this. Cook something real.",tclass:"tier-D"},
+];
+
+const tierScaleData = [
+  {t:"S+",c:"tier-S-plus"},{t:"S",c:"tier-S"},{t:"A",c:"tier-A"},
+  {t:"B",c:"tier-B"},{t:"C",c:"tier-C"},{t:"D",c:"tier-D"},
+  {t:"F",c:"tier-F"},{t:"F-",c:"tier-F-minus"}
+];
+
+let selectedFood = null;
+
+// Build food grid
+const grid = document.getElementById('foodGrid');
+foods.forEach((f, i) => {
+  const btn = document.createElement('button');
+  btn.className = 'food-btn';
+  btn.innerHTML = `<span class="fe">${f.emoji}</span><span class="fn">${f.name}</span>`;
+  btn.onclick = () => {
+    document.querySelectorAll('.food-btn').forEach(b => b.classList.remove('selected'));
+    btn.classList.add('selected');
+    selectedFood = i;
+  };
+  grid.appendChild(btn);
+});
+
+// Build tier scale
+const scaleEl = document.getElementById('tierScale');
+tierScaleData.forEach(t => {
+  const el = document.createElement('div');
+  el.className = `ts-item ${t.c}`;
+  el.id = `ts-${t.t.replace('+','plus').replace('-','minus')}`;
+  el.textContent = t.t;
+  scaleEl.appendChild(el);
+});
+
+function rateFood() {
+  if (selectedFood === null) {
+    grid.style.animation = 'none';
+    grid.offsetHeight;
+    grid.style.animation = 'shake .3s ease';
+    return;
+  }
+  const f = foods[selectedFood];
+  document.getElementById('foodEmoji').textContent = f.emoji;
+  document.getElementById('foodNameDisplay').textContent = f.name;
+  document.getElementById('quoteBox').textContent = f.quote;
+  const tb = document.getElementById('tierBadge');
+  tb.textContent = f.tier;
+  tb.className = `tier-badge ${f.tclass}`;
+  document.getElementById('tierLabel').textContent = f.label;
+
+  // Highlight tier scale
+  document.querySelectorAll('.ts-item').forEach(el => el.classList.remove('active'));
+  const activeId = `ts-${f.tier.replace('+','plus').replace('-','minus')}`;
+  const activeEl = document.getElementById(activeId);
+  if (activeEl) activeEl.classList.add('active');
+
+  const res = document.getElementById('results');
+  res.classList.add('show');
+  setTimeout(() => res.scrollIntoView({behavior:'smooth',block:'nearest'}), 50);
+}
+
+function copyLink(btn){
+  navigator.clipboard.writeText(window.location.href).then(()=>{
+    btn.textContent='✓ Copied!';
+    btn.style.cssText='background:rgba(255,69,87,.1);border-color:rgba(255,69,87,.3);color:#ff4557';
+    setTimeout(()=>{btn.textContent='📋 Copy Link';btn.style.cssText='';},2200);
+  });
+}
+function shareWA(){
+  const f = selectedFood !== null ? foods[selectedFood] : {name:'Minecraft food',tier:'?'};
+  const msg = encodeURIComponent(`Gordon Ramsay rated my ${f.name} in Minecraft and gave it a ${f.tier} tier 😂 Check what he says about yours: ${window.location.href} 🔥`);
+  window.open('https://wa.me/?text='+msg,'_blank');
+}
+</script>
+</body>
+</html>
